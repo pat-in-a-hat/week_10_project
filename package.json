@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "csv-parse": "^5.3.0",
+    "jquery": "^3.6.1",
+    "jquery-csv": "^1.0.21",
+    "requirejs": "^2.3.6"
+  },
+  "name": "week-10-code-assignment",
+  "version": "1.0.0",
+  "description": "week 10 project for montana code school",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "coming soon"
+  },
+  "author": "Patrick Warner",
+  "license": "ISC"
+}
