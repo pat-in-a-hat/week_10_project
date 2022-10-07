@@ -42,7 +42,8 @@ const nfl_array = [
 ];
 
 function optionCreator(){
-    let selector = document.getElementById('nfl-team-sel')
+    let selector = document.getElementById('nfl-team-sel');
+    //selector.innerHTML = '';
     let option_selected = document.createElement('option');
     option_selected.setAttribute('selected', '')
     option_selected.innerHTML = 'Select an NFL Team';
@@ -59,13 +60,15 @@ const submit_array = [];
 let id = 0;
 
 function onClick(){
+    optionCreator();
     document.getElementById('submit-btn').addEventListener("click", () => {
         submit_array.push({id:id, team: document.getElementById('team-name').value, nfl_pick: nfl_array[document.getElementById('nfl-team-sel').value].team})
         id++
         //console.log(submit_array)
-        console.log(id)
+        //console.log(id)
         tableBuilder(submit_array);
-        //need to clear the fields after this
+        document.getElementById('team-name').value = ''
+        document.getElementById('nfl-team-sel').selectedIndex = 0;
     })
 }
 
@@ -94,7 +97,6 @@ function tableBuilder(array){
     }
 }
 
-optionCreator();
 onClick();
 
 
