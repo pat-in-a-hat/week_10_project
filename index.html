@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="nfl-team-sel">Your Pickem Pick</label>
                         <select class="form-control" id="nfl-team-sel">
-
+                            
                         </select>
                     </div>
                 </div>
@@ -31,10 +31,21 @@
 
         </div>
 
-    </div>
+    </div><br><br>
 
-    <div id="js-table">
+    <div class="container">
+        <table class="table thead-dark table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Team Name</th>
+                    <th scope="col">NFL Pickem Pick</th>
 
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
     </div>
 
 <script type="module" src="index.js"></script>

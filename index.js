@@ -5,18 +5,7 @@
 //Utilizing Bootstrap 5.2.2 and jquery 3.6.1, installed via npm
 
 
-class NFL {
-    constructor(){
-        const nfl_array = [
-            {id:1,	team:"Arizona Cardinals", abbr: "ARI", conf:"NFC", div:"West"},
-            {id:2, team:"Atlanta Falcons", abbr: "ATL", conf:"NFC", div:"South" },
-            
-        ]
-    }
-}
-
 //Javascript Array in Key:Value pairs for all 32 NFL Teams
-
 const nfl_array = [
     {id:1,	team:"Arizona Cardinals", abbr: "ARI", conf:"NFC", div:"West"},
     {id:2, team:"Atlanta Falcons", abbr: "ATL", conf:"NFC", div:"South" },
@@ -50,12 +39,63 @@ const nfl_array = [
     {id:30, team:"Tampa Bay Buccaneers", abbr:"TB", conf:"NFC", div:"South"},
     {id:31, team:"Tennessee Titans", abbr:"TEN", conf:"AFC", div:"South"},
     {id:32, team:"Washington Commanders", abbr:"WAS", conf:"NFC", div:"East"}
-]
+];
 
-for (let team of nfl_array){
-    console.log(team)
+function optionCreator(){
+    let selector = document.getElementById('nfl-team-sel')
+    let option_selected = document.createElement('option');
+    option_selected.setAttribute('selected', '')
+    option_selected.innerHTML = 'Select an NFL Team';
+    selector.appendChild(option_selected)
+    for (let i in nfl_array){
+        let option = document.createElement('option')
+        option.value = i
+        option.innerHTML = nfl_array[i].team
+        selector.appendChild(option)
+    }
 }
 
+const submit_array = [];
+let id = 0;
+
+function onClick(){
+    document.getElementById('submit-btn').addEventListener("click", () => {
+        submit_array.push({id:id, team: document.getElementById('team-name').value, nfl_pick: nfl_array[document.getElementById('nfl-team-sel').value].team})
+        id++
+        //console.log(submit_array)
+        console.log(id)
+        tableBuilder(submit_array);
+        //need to clear the fields after this
+    })
+}
+
+function tableBuilder(array){
+   // start_day = new Date(2022,09,08)
+    //date = new Date()
+    //nfl_week = switch()
+    while(document.getElementById('table-body').firstChild){
+        document.getElementById('table-body').removeChild(document.getElementById('table-body').firstChild)
+    }
+   
+    for (let row of array){
+        let table = document.getElementById('table-body')
+        let new_row = document.createElement('tr')
+        let new_data = document.createElement('td')
+        let new_data2 = document.createElement('td')
+        table.appendChild(new_row)
+        table.appendChild(new_data)
+        new_data.innerHTML = `${row.team}`
+
+        table.appendChild(new_data2)
+        new_data2.innerHTML = `${row.nfl_pick}`
+
+        //initially had issue with innerHTML overwriting and thought it could be a nesting issue so wrote below code
+        //table.insertAdjacentElement("beforeend", new_data2)
+    }
+}
+
+optionCreator();
+onClick();
 
 
 //Utilizing Bootstrap 5, jquery, and csv-parse all installed via npm
