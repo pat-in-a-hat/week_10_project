@@ -41,6 +41,8 @@ const nfl_array = [
     {id:32, team:"Washington Commanders", abbr:"WAS", conf:"NFC", div:"East"}
 ];
 
+
+//function that creates a dynamic drop down list of the NFL teams based off the above array
 function optionCreator(){
     let selector = document.getElementById('nfl-team-sel');
     //selector.innerHTML = '';
@@ -56,9 +58,11 @@ function optionCreator(){
     }
 }
 
+//array to store submitted values for table upload and id to give unique identifier to new row if needed
 const submit_array = [];
 let id = 0;
 
+//executes code block to save the submitted code, then runs the function to load it to the table, then clears the submissions for good UX
 function onClick(){
     optionCreator();
     document.getElementById('submit-btn').addEventListener("click", () => {
@@ -72,6 +76,7 @@ function onClick(){
     })
 }
 
+//builds the new row in the table using the saved submission data
 function tableBuilder(array){
    // start_day = new Date(2022,09,08)
     //date = new Date()
@@ -100,7 +105,10 @@ function tableBuilder(array){
 onClick();
 
 
-//Utilizing Bootstrap 5, jquery, and csv-parse all installed via npm
+//ignore this code, I just left it here as a reminder of what I tried to do
+//essentially I attempted to store the NFL array in a csv, then load it in and parse it into an array
+//this didn't work for a few reasons, including fs can't be used browser side and all of this is kinda janky with dom
+//
 //const fs = require("node:fs");
 //const {parse} = require("csv-parse");
 //const {data} = require("jquery");
